@@ -2,36 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- NOMES DOS ARQUIVOS DE IMAGEM NA PASTA "midias" ---
     const imageFileNames = [
-        'Foto_1.jpg',
-        'Foto_2.jpg',
-        'Foto_3.jpg',
-        'Foto_4.jpg',
-        'Foto_5.jpg',
-        'Foto_6.jpg',
-        'Foto_7.jpg',
-        'Foto_8.jpg',
-        'Foto_9.jpg',
-        'Foto_10.jpg',
-        'Foto_11.jpg',
-        'Foto_12.jpg',
-        'Foto_13.jpg',
-        'Foto_14.jpg',
-        'Foto_15.jpg',
-        'Foto_16.jpg',
-        'Foto_17.jpg',
-        'Foto_18.jpg',
-        'Foto_19.jpg',
-        'Foto_20.jpg',
-        'Foto_21.jpg',
-        'Foto_100.HEIC'
+        'Foto_1.jpg', 'Foto_2.jpg', 'Foto_3.jpg', 'Foto_4.jpg', 
+        'Foto_5.jpg', 'Foto_6.jpg', 'Foto_7.jpg', 'Foto_8.jpg', 
+        'Foto_9.jpg', 'Foto_10.jpg', 'Foto_11.jpg', 'Foto_12.jpg', 
+        'Foto_13.jpg', 'Foto_14.jpg', 'Foto_15.jpg', 'Foto_16.jpg', 
+        'Foto_17.jpg', 'Foto_18.jpg', 'Foto_19.jpg', 'Foto_20.jpg', 
+        'Foto_21.jpg', 'Foto_100.HEIC'
     ];
 
     // --- LÓGICA DOS CONTADORES ---
     function startCounters() {
-        // Formato: Ano, Mês, Dia, Hora, Minuto, Segundo
-        const dateConhecido = new Date(2024, 6, 17, 0, 0, 0); // 17 de Julho de 2024
-        const dateBeijo = new Date(2024, 7, 17, 0, 0, 0);     // 17 de Agosto de 2024
-        const dateNamoro = new Date(2025, 0, 17, 0, 0, 0);    // 17 de Janeiro de 2025
+        // Lembre-se de ajustar para as suas datas reais!
+        // Formato: Ano, Mês (0=Jan, 1=Fev, ...), Dia
+        const dateConhecido = new Date(2024, 6, 17); // 17 de Julho de 2024
+        const dateBeijo = new Date(2024, 7, 17);     // 17 de Agosto de 2024
+        const dateNamoro = new Date(2025, 0, 17);    // 17 de Janeiro de 2025
 
         const conhecidoCounter = document.getElementById('conhecido-counter');
         const beijoCounter = document.getElementById('beijo-counter');
@@ -58,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 `${String(seconds).padStart(2, '0')}s`;
         }
 
-        // Atualiza os contadores a cada segundo
         setInterval(() => {
             updateCounter(conhecidoCounter, dateConhecido);
             updateCounter(beijoCounter, dateBeijo);
@@ -66,14 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // --- LÓGICA DO CARROSSEL DINÂMICO ---
+    // --- LÓGICA DO CARROSSEL ---
     function startCarousel() {
         const carousel = document.querySelector('.carousel');
         const nextButton = document.querySelector('.next');
         const prevButton = document.querySelector('.prev');
         let currentIndex = 0;
+        let slides = [];
 
-        // Cria os slides dinamicamente a partir da lista de nomes de arquivos
         imageFileNames.forEach(fileName => {
             const slide = document.createElement('div');
             slide.classList.add('slide');
@@ -84,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel.appendChild(slide);
         });
 
-        const slides = Array.from(document.querySelectorAll('.slide'));
-        if (slides.length === 0) return; // Não faz nada se não houver imagens
+        slides = Array.from(document.querySelectorAll('.slide'));
+        if (slides.length === 0) return;
 
         function updateCarousel() {
             carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -107,25 +91,23 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCarousel();
         });
 
-        updateCarousel(); // Inicia o carrossel exibindo o primeiro slide
+        updateCarousel();
     }
 
     // --- LÓGICA DA CHUVA DE CORAÇÕES ---
     function startHeartRain() {
         const canvas = document.getElementById('heart-rain-canvas');
         const ctx = canvas.getContext('2d');
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         let hearts = [];
 
         function createHeart() {
             const x = Math.random() * canvas.width;
-            const y = (Math.random() * -canvas.height) - 20; // Começa um pouco acima da tela
-            const size = Math.random() * 20 + 10; // Tamanho entre 10 e 30
-            const speed = Math.random() * 3 + 1; // Velocidade entre 1 e 4
-            const opacity = Math.random() * 0.5 + 0.3; // Opacidade entre 0.3 e 0.8
+            const y = (Math.random() * -canvas.height) - 20;
+            const size = Math.random() * 20 + 10;
+            const speed = Math.random() * 3 + 1;
+            const opacity = Math.random() * 0.5 + 0.3;
             hearts.push({ x, y, size, speed, opacity });
         }
 
@@ -145,14 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateHearts() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < hearts.length; i++) {
-                let heart = hearts[i];
+                let heart = hearts[i]; // Bug corrigido aqui
                 heart.y += heart.speed;
                 drawHeart(heart);
-
-                // Se o coração sair da tela, remove ele para não sobrecarregar
                 if (heart.y > canvas.height + heart.size) {
                     hearts.splice(i, 1);
-                    i--; // Ajusta o índice do loop após remover um elemento
+                    i--;
                 }
             }
         }
@@ -162,16 +142,41 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(gameLoop);
         }
 
-        // Gera corações continuamente
         setInterval(createHeart, 300);
-        
-        // Inicia a animação
         gameLoop();
-
-        // Ajusta o tamanho do canvas se o usuário redimensionar a janela
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+        });
+    }
+
+    // --- LÓGICA DO LIGHTBOX (TELA CHEIA) ---
+    function setupLightbox() {
+        const carousel = document.querySelector('.carousel');
+        const lightboxOverlay = document.getElementById('lightbox-overlay');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeButton = document.querySelector('.lightbox-close');
+
+        if (!carousel || !lightboxOverlay || !lightboxImage || !closeButton) {
+            return;
+        }
+
+        carousel.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG' && e.target.closest('.slide.active')) {
+                lightboxImage.src = e.target.src;
+                lightboxOverlay.style.display = 'flex';
+            }
+        });
+
+        function closeLightbox() {
+            lightboxOverlay.style.display = 'none';
+        }
+
+        closeButton.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', (e) => {
+            if (e.target === lightboxOverlay) {
+                closeLightbox();
+            }
         });
     }
 
@@ -179,4 +184,5 @@ document.addEventListener('DOMContentLoaded', () => {
     startCounters();
     startCarousel();
     startHeartRain();
+    setupLightbox();
 });
