@@ -48,12 +48,12 @@ h2 {
 /* Estilo do Carrossel */
 .carousel-container {
     position: relative;
-    width: 100%;
+    width: 80%;
     /* Diminuímos a largura máxima para o carrossel ficar mais estreito */
     max-width: 380px; 
     margin: 0 auto 40px;
     /* Aumentamos a altura para o carrossel ficar mais alto */
-    height: 460px; 
+    height: 360px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,9 +77,9 @@ h2 {
 }
 
 .slide img {
-    width: 100%;
+    width: 80%;
     /* A altura da imagem deve ser a mesma do container */
-    height: 460px; 
+    height: 360px; 
     object-fit: cover; /* 'cover' faz a imagem preencher o espaço, cortando as laterais se necessário, sem distorcer. */
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
