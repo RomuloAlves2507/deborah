@@ -20,7 +20,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Fica atrás de todo o conteúdo */
+    z-index: -1;
 }
 
 .main-container {
@@ -31,7 +31,7 @@ body {
 
 h1 {
     font-family: 'Playfair Display', serif;
-    color: #ff4d4d; /* Vermelho suave */
+    color: #ff4d4d;
     font-size: 1.8em;
     font-weight: normal;
     margin: 40px 0 20px;
@@ -45,17 +45,17 @@ h2 {
     margin-bottom: 30px;
 }
 
-/* Estilo do Carrossel (Corrigido) */
+/* Estilo do Carrossel (Versão que funciona para você) */
 .carousel-container {
     position: relative;
-    width: 100%;
-    max-width: 420px; /* Um pouco maior que a imagem para dar espaço para as bordas */
+    width: 80%;
+    max-width: 380px; 
     margin: 0 auto 40px;
-    height: 360px;
+    height: 380px; 
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Essencial para esconder o que vaza */
+    overflow: hidden; /* Garante que as imagens laterais não vazem */
 }
 
 .carousel {
@@ -65,30 +65,26 @@ h2 {
 
 .slide {
     min-width: 100%;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transition: opacity 0.5s, transform 0.5s;
+    opacity: 0.5;
+    transform: scale(0.7);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .slide img {
-    /* Controle o tamanho da imagem principal aqui */
-    width: 70%; 
-    height: 360px;
+    width: 80%;
+    height: 380px; 
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    transition: opacity 0.45s ease;
 }
 
-/* Deixa as imagens que NÃO são a principal um pouco transparentes */
-.slide:not(.active) img {
-    opacity: 0.3;
-}
-
-/* Adiciona um cursor para indicar que a imagem ativa é clicável */
 .slide.active img {
-    cursor: zoom-in;
+    cursor: zoom-in; /* Adiciona cursor de zoom na imagem ativa */
 }
 
 .carousel-button {
@@ -148,21 +144,22 @@ h2 {
     display: block;
 }
 
-/* Player de Música do Spotify */
-.spotify-player {
-    margin: 40px auto 20px;
-    padding: 0 15px;
-    max-width: 450px;
+/* Player de Música Local */
+.music-player {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #111;
+    border-radius: 10px;
 }
 
-.spotify-player h3 {
+.music-player h3 {
     margin-bottom: 15px;
     font-family: 'Playfair Display', serif;
-    text-align: center;
 }
 
-.spotify-player iframe {
+audio {
     width: 100%;
+    max-width: 350px;
 }
 
 /* --- Estilos do Lightbox (Tela Cheia) --- */
