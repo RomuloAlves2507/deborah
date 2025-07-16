@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Momentos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="heart-rain-canvas"></canvas>
+
+    <div class="main-container">
+        <h1>Eu só descobri o que era felicidade depois que você entrou em minha vida</h1>
+
+        <h2>NOSSOS MOMENTOS</h2>
+
+        <div class="carousel-container">
+            <div class="carousel">
+                </div>
+            <button class="carousel-button prev">&#10094;</button>
+            <button class="carousel-button next">&#10095;</button>
+        </div>
+
+        <div class="counters-container">
+            <div class="counter-box">
+                <p>Tempo de Conhecido</p>
+                <div id="conhecido-counter" class="timer">00d 00h 00m 00s</div>
+                <span class="since-date">Desde: 17/07/2024</span>
+            </div>
+            <div class="counter-box">
+                <p>Tempo de Primeiro Beijo</p>
+                <div id="beijo-counter" class="timer">00d 00h 00m 00s</div>
+                <span class="since-date">Desde: 17/08/2024</span>
+            </div>
+            <div class="counter-box">
+                <p>Tempo de Namoro</p>
+                <div id="namoro-counter" class="timer">00d 00h 00m 00s</div>
+                <span class="since-date">Desde: 17/01/2025</span>
+            </div>
+        </div>
+
+        <div class="music-player">
+            <h3>Nossa Trilha Sonora</h3>
+            <audio controls>
+                <source src="midias/musica.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
