@@ -49,10 +49,8 @@ h2 {
 .carousel-container {
     position: relative;
     width: 80%;
-    /* Diminuímos a largura máxima para o carrossel ficar mais estreito */
     max-width: 380px; 
     margin: 0 auto 40px;
-    /* Aumentamos a altura para o carrossel ficar mais alto */
     height: 360px; 
     display: flex;
     align-items: center;
@@ -66,9 +64,9 @@ h2 {
 
 .slide {
     min-width: 100%;
-    transition: opacity 0.5s, transform 0.5s;
-    opacity: 0.5;
-    transform: scale(0.7);
+    transition: opacity 0.45s, transform 0.45s;
+    opacity: 0.45;
+    transform: scale(0.95);
 }
 
 .slide.active {
