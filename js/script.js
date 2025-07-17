@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Foto_9.jpg', 'Foto_10.jpg', 'Foto_11.jpg', 'Foto_12.jpg', 
         'Foto_13.jpg', 'Foto_14.jpg', 'Foto_15.jpg', 'Foto_16.jpg', 
         'Foto_17.jpg', 'Foto_18.jpg', 'Foto_19.jpg', 'Foto_20.jpg', 
+        'Foto_22.jpeg', 'Foto_23.jpeg', 'Foto_24.jpeg', 'Foto_25.jpeg', 'Foto_26.jpeg', 
         'Foto_21.jpg', 'Foto_100.HEIC'
     ];
 
