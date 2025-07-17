@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function startCounters() {
         // Lembre-se de ajustar para as suas datas reais!
         // Formato: Ano, Mês (0=Jan, 1=Fev, ...), Dia
-        const dateConhecido = new Date(2024, 6, 17); // 17 de Julho de 2024
-        const dateBeijo = new Date(2024, 7, 17);     // 17 de Agosto de 2024
-        const dateNamoro = new Date(2025, 0, 17);    // 17 de Janeiro de 2025
+        const dateConhecido = new Date(2024, 6, 17, 11, 59); // 17 de Julho de 2024
+        const dateBeijo = new Date(2024, 7, 17, 15, 40);     // 17 de Agosto de 2024
+        const dateNamoro = new Date(2025, 0, 17, 18, 15);    // 17 de Janeiro de 2025
 
         const conhecidoCounter = document.getElementById('conhecido-counter');
         const beijoCounter = document.getElementById('beijo-counter');
